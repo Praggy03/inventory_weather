@@ -29,6 +29,8 @@ Step 4: Type in ```127.0.0.1:3000``` or ```localhost:3000``` in the browser. Thi
 
 Inventory CRUD - Click on ```Inventories``` on home page options and follow the on-screen options
 
+Weather Information - I have used openweather API to get weather information and have cached the information for every 10 minutes.
+
 ### Additional Task Implemented:
 
 Ability to create shipments and assign inventory to shipment and adjust inventory appropriately
