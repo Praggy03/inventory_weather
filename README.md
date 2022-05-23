@@ -1,6 +1,6 @@
 # README
 
-This project is a submission for the Shopify Fall 2022 Backend Developer Challenge. This project is inmplemented in Ruby and Ruby on Rails framework 
+This project is a submission for the Shopify Fall 2022 Production Engineer intern Challenge. This project is inmplemented in Ruby and Ruby on Rails framework 
 
 * Language - ```Ruby```
 
