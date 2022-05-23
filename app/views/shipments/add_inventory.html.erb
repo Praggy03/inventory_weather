@@ -1,0 +1,40 @@
+
+<p style="color: red"><%= notice %></p>
+
+<h1> Add Inventory to Shipment </h1>
+
+<%= form_for @mapping, url:"/shipments/#{params[:id]}/assign_inventory", method: :post do |form| %>
+
+  <% if @mapping.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@mapping.errors.count, "error") %> prohibited this inventory addition:</h2>
+
+      <ul>
+        <% @mapping.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render @shipment%>
+
+  <br>
+
+  <div>
+    <%= form.label :inventory, style: "display: block" %>
+    <%= form.select :inventory_id, options_for_select(Inventory.active.map {|i| ["#{i.name.titleize} - Quantity Available #{i.quantity}", i.id]}, @mapping.inventory_id) %>
+  </div>
+
+  <div>
+    <%= form.label :quantity, style: "display: block" %>
+    <%= form.text_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+

@@ -1,0 +1,59 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  cannot_destroy_item: "Cannot destroy item as it is associated with one or more items"
+  shipment:
+    created: "Shipment was successfully created."
+    updated: "Shipment was successfully updated."
+    destroyed: "Shipment was successfully deleted."
+    add_inventory_success: "Inventory was successfully added."
+    add_inventory_failure: "Cannot add inventory greater than available quantity!"
+    remove_inventory: "Inventory was successfully removed!"
+    validation_error: "Source and destionation cannot be the same"
+  state:
+    created: "State was successfully created."
+    updated: "State was successfully updated."
+    destroyed: "State was successfully deleted."
+  country:
+    created: "Country was successfully created."
+    updated: "Country was successfully updated."
+    destroyed: "Country was successfully deleted."
+  city:
+    created: "City was successfully created."
+    updated: "City was successfully updated."
+    destroyed: "City was successfully deleted."
+  inventory:
+    created: "Inventory was successfully created."
+    updated: "Inventory was successfully updated."
+    destroyed: "Inventory was successfully destroyed."
+    quantity_error: "Inventory has been assigned to shipment. Adjust shipment accordingly to reduce inventory quantity"

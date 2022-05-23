@@ -1,0 +1,37 @@
+<h1 style="text-align: center;">Welcome to the Inventory Tracker</h1>
+
+<style>
+td {
+  border: solid 2px black;
+}
+th {
+  border: solid 2px black;
+}
+</style>
+
+<div id="main-options">
+  <table id="main-options-table" align="center" style="border: 2px solid black; border-collapse: collapse; ">
+    <tr>
+      <th><b>Options</b></th>
+    </tr>
+	<tr>
+    	<td><%=link_to "Inventories", inventories_path%></td>
+    </tr>
+    <tr>
+    	<td><%=link_to "Shipments", shipments_path%></td>
+    </tr>
+    <tr>
+      <td><%=link_to "Assign Inventory to Shipment", shipments_path%></td>
+    </tr>
+    <tr>
+      <td><%=link_to "Countries", countries_path%></td>
+    </tr>
+    <tr>
+      <td><%=link_to "States", states_path%></td>
+    </tr>
+    <tr>
+      <td><%=link_to "Cities", cities_path%></td>
+    </tr>
+
+  </table>
+</div>

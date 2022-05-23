@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+<%= render @shipment %>
+<style>
+td {
+  border: solid 2px black;
+}
+th {
+  border: solid 2px black;
+}
+</style>
+
+<% if @mappings.present? %>
+<b><%= "Inventory allocated to this shipment"   %></b>
+<div id="inventories">
+  <table id="inventories-table" style="border: 2px solid black; border-collapse: collapse; ">
+    <tr>
+      <th><%=link_to "Name"%></th>
+      <th><%=link_to "Description"%></th>
+      <th><%=link_to "Quantity"%></th>
+      <th><%=link_to "Status"%></th>
+      <th><%=link_to "Added At"%></th>
+    </tr>
+    <% @mappings.each do |mapping| %>
+      <tr>
+        <% @inventory = mapping.inventory %>
+        <td><%=link_to @inventory.name, @inventory%></td>
+        <td><%= @inventory.description%></td>
+        <td align="center"><%= mapping.quantity%></td>
+        <td><%= @inventory.status%></td>
+        <td><%= mapping.created_at.strftime("%e %b %y - %l %M %p")%></td>
+        <td><%= button_to "Remove", remove_inventory_shipment_path, method: :post, params: { inventory_id: @inventory.id } %>
+      </tr>
+    <%end%>
+  </table>
+  <br>
+</div>
+
+<% end %>
+
+<div>
+  <%= link_to "Edit this shipment", edit_shipment_path(@shipment) %> |
+  <%= link_to "Back to shipments", shipments_path %> |
+  <%= link_to "Assign Inventory", add_inventory_shipment_path %>
+  <%= button_to "Destroy this shipment", @shipment, method: :delete %>
+
+</div>

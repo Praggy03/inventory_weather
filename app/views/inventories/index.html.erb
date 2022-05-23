@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Inventories</h1>
+
+<style>
+td {
+  border: solid 2px black;
+}
+th {
+  border: solid 2px black;
+}
+</style>
+
+<div id="inventories">
+  <table id="inventories-table" style="border: 2px solid black; border-collapse: collapse; ">
+    <tr>
+      <th><%=link_to "Name", :sort => "name"%></th>
+      <th><%=link_to "Description", :sort => "description"%></th>
+      <th><%=link_to "Quantity", :sort => "quantity"%></th>
+      <th><%=link_to "Status", :sort => "status"%></th>
+    </tr>
+    <% @inventories.each do |inventory| %>
+      <tr>
+        <td><%=link_to inventory.name, inventory%></td>
+        <td><%= inventory.description%></td>
+        <td><%= inventory.quantity%></td>
+        <td><%= inventory.status%></td>
+      </tr>
+    <%end%>
+  </table>
+</div>
+
+<br>
+<div>
+<%= link_to "New inventory", new_inventory_path %>
+</div>
