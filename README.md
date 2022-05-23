@@ -40,3 +40,8 @@ Ability to create shipments and assign inventory to shipment and adjust inventor
 2. Click on ```Assign Inventory``` on a single shipment member and follow the on-screen options to assign inventory to a shipment.
 
 3. Click on ```Remove``` button right next to an assigned inventory to a shipment in order to remove it from the shipment.
+
+
+Replit Link - https://replit.com/@Pragadeeshkumar/inventoryweather
+
+Kindly view on full screen while viewing on replit :)
