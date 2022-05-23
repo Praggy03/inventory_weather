@@ -10,6 +10,7 @@ class Shipment < ApplicationRecord
 
 
   def add_inventory(inventory, quantity)
+    check_inventory_city(inventory)
     ActiveRecord::Base.transaction  do
       mapping = ShipmentInventoryMapping.create(shipment_id: self.id, inventory_id: inventory.id, quantity: quantity)
       inventory.quantity = inventory.quantity - quantity
@@ -30,6 +31,10 @@ class Shipment < ApplicationRecord
 
   def source_destination_check
     errors.add(:base, I18n.t("shipment.validation_error")) if self.source_id == self.destination_id
+  end
+
+  def check_inventory_city(inventory)
+    errors.add(:base, I18n.t("shipment.validation_error")) if self.source_id != inventory.city_id
   end
 
 end

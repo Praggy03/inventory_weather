@@ -18,7 +18,10 @@ cities = City.create([{name: "Phoenix", state_id: arizona.id},{name: "Tempe", st
 california = State.find_by name: "California"
 cities = City.create([{name: "Los Angeles", state_id: california.id},{name: "San Francisco", state_id: california.id}])
 
-Inventory.create(name:"Brand HD TV", description: "Brand Ultra HD 50", quantity: 500, status: 1)
-Inventory.create(name:"Brand Shoes", description: "Brand Air Shoes. Ultra comfort sports shoes", quantity: 100, status: 1)
-Inventory.create(name:"Brand Pen", description: "Ultra writing comfort", quantity: 2000, status: 1)
-Inventory.create(name:"Brand Laptops", description: "Brand Laptop high performance", quantity: 200, status: 1)
+city1 = City.find_by name: "San Francisco"
+city2 = City.find_by name: "Los Angeles"
+
+Inventory.create(name:"Brand HD TV", description: "Brand Ultra HD 50", quantity: 500, status: 1, city_id: city1.id )
+Inventory.create(name:"Brand Shoes", description: "Brand Air Shoes. Ultra comfort sports shoes", quantity: 100, status: 1, city_id: city2.id)
+Inventory.create(name:"Brand Pen", description: "Ultra writing comfort", quantity: 2000, status: 1, city_id: city1.id)
+Inventory.create(name:"Brand Laptops", description: "Brand Laptop high performance", quantity: 200, status: 1, city_id: city2.id)

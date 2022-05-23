@@ -18,6 +18,8 @@ th {
       <th><%=link_to "Description", :sort => "description"%></th>
       <th><%=link_to "Quantity", :sort => "quantity"%></th>
       <th><%=link_to "Status", :sort => "status"%></th>
+      <th><%=link_to "City"%></th>
+      <th><%=link_to "Weather Report"%></th>
     </tr>
     <% @inventories.each do |inventory| %>
       <tr>
@@ -25,6 +27,8 @@ th {
         <td><%= inventory.description%></td>
         <td><%= inventory.quantity%></td>
         <td><%= inventory.status%></td>
+        <td><%= inventory.city.name%></td>
+        <td><%= "#{inventory.city.weather.description.titleize} with #{inventory.city.weather.temperature} F"%></td>
       </tr>
     <%end%>
   </table>

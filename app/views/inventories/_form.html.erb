@@ -24,12 +24,16 @@
   <div>
     <%= form.label :status, style: "display: block" %>
     <%= form.select :status, options_for_select(Inventory.statuses.map {|key, value| [key.titleize, key]}, @inventory.status) %>
-
   </div>
 
   <div>
     <%= form.label :quantity, style: "display: block" %>
     <%= form.number_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.label :city_id, style: "display: block" %>
+    <%= form.select :city_id, options_for_select(City.all.map {|city| [city.name.titleize, city.id]}, @inventory.city_id) %>
   </div>
 
   <div>

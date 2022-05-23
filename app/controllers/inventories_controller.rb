@@ -3,7 +3,7 @@ class InventoriesController < ApplicationController
   before_action :set_inventory, only: %i[ show edit update destroy ]
 
   def index
-    @inventories = Inventory.all || []
+    @inventories = Inventory.includes(:city).all || []
     @inventories = @inventories.order(params[:sort]) if params[:sort].present?
   end
 

@@ -5,6 +5,7 @@ class CreateInventories < ActiveRecord::Migration[7.0]
       t.text :description
       t.integer :status, default: 1
       t.integer :quantity, default: 0
+      t.references :city, null: false, foreign_key: true
       t.timestamps
     end
   end

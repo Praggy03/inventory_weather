@@ -20,20 +20,27 @@
   <%= render @shipment%>
 
   <br>
+  
+  <% @inventory_options = Inventory.active.where(city_id: @shipment.source_id)%>
+  <% if @inventory_options.present? %>
+    <div>
+      <%= form.label :inventory, style: "display: block" %>
+      <%= form.select :inventory_id, options_for_select(@inventory_options.map {|i| ["#{i.name.titleize} - Quantity Available #{i.quantity}", i.id]}, @mapping.inventory_id) %>
+    </div>
 
-  <div>
-    <%= form.label :inventory, style: "display: block" %>
-    <%= form.select :inventory_id, options_for_select(Inventory.active.map {|i| ["#{i.name.titleize} - Quantity Available #{i.quantity}", i.id]}, @mapping.inventory_id) %>
-  </div>
+    <div>
+      <%= form.label :quantity, style: "display: block" %>
+      <%= form.text_field :quantity %>
+    </div>
 
-  <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.text_field :quantity %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% else %>
+    <div>
+        <h3 style="color: red"> No inventory available to add at this shipment's source city </h3>
+    </div>
+  <% end %>
 
 <% end %>
 

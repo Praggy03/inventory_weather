@@ -32,8 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_035916) do
     t.text "description"
     t.integer "status", default: 1
     t.integer "quantity", default: 0
+    t.integer "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_inventories_on_city_id"
     t.index ["name"], name: "index_inventories_on_name", unique: true
   end
 
@@ -70,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_035916) do
   end
 
   add_foreign_key "cities", "states"
+  add_foreign_key "inventories", "cities"
   add_foreign_key "shipment_inventory_mappings", "inventories"
   add_foreign_key "shipment_inventory_mappings", "shipments"
   add_foreign_key "shipments", "cities", column: "destination_id"

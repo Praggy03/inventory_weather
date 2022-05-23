@@ -8,6 +8,7 @@ class Inventory < ApplicationRecord
 
 	has_many :shipment_inventory_mappings, dependent: :restrict_with_error
 	has_many :shipment, through: :shipment_inventory_mapping, dependent: :restrict_with_error
+	belongs_to :city
 
 	def check_and_update_quantity(quantity)
 		shipment_inventory = self.shipment_inventory_mappings

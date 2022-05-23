@@ -40,6 +40,7 @@ en:
     add_inventory_failure: "Cannot add inventory greater than available quantity!"
     remove_inventory: "Inventory was successfully removed!"
     validation_error: "Source and destionation cannot be the same"
+    inventory_error: "Inventory from different city cannot be added to shipment"
   state:
     created: "State was successfully created."
     updated: "State was successfully updated."

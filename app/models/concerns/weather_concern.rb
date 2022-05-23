@@ -1,13 +1,16 @@
 require 'net/http'
 
-module CitiesHelper
+module WeatherConcern
+	
+	extend ActiveSupport::Concern
 
 	def get_weather_info(city)
 		cache = Rails.cache.read("cities_weather_data")
 		if cache
 			cache = JSON.parse(cache)
-			if cache[city.id]
-				return cache[city.id]
+			if cache[city.id.to_s]
+				data = cache[city.id.to_s]
+				return Weather.new(name: data["name"], description: data["description"], temperature: data["temperature"])
 			else
 				return build_weather_cache(city, cache)
 			end
@@ -24,8 +27,6 @@ module CitiesHelper
 			raw_info = get_weather_info_from_ow(lat, lon)
 			if raw_info
 				ftemp = ktof(raw_info["main"]["temp"])
-				print("Ena dhan da prachana")
-				print(raw_info)
 				weather = Weather.new(name: city.name, description: raw_info["weather"].first["description"], temperature:ftemp)
 				cache[city.id] = weather
 				Rails.cache.write("cities_weather_data", cache.to_json, expires_in: 10.minutes)
@@ -68,8 +69,6 @@ module CitiesHelper
 	def ktof(kelvin)
 		return ((1.8 * (kelvin - 273)) + 32).round(2)
 	end
-
-
 
 	class Weather
 		attr_accessor :description
